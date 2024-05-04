@@ -501,6 +501,8 @@ def similar_pts(dfpt, min=5):
   d_para = ''
 
   for i in parameters:
+    difference = abs(dfpren.describe()[1:3][parameters][i][0]-dfpt_temp[i][0])
+    sd = dfpren.describe()[1:3][parameters][i][1]
     if difference > 2*sd:
       d_para=d_para+i+' '
 
