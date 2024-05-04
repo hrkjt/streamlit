@@ -13,7 +13,6 @@ from plotly.subplots import make_subplots
 import plotly.figure_factory as ff
 import datetime
 import requests
-from sklearn import linear_model
 
 #あらかじめ作成しておいたCSVファイルをデータフレームに
 # ファイルのURL
