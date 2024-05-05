@@ -477,14 +477,14 @@ def similar_pts(dfpt, min=5):
   dftxn = dftx[dftx['ダミーID'].isin(ply)]
   #dftxn = dftxn[dftxn['全治療期間m'] != 0] #dftxnから経過観察症例を除外 10/29追記 必要？
 
-  dfpren = dftx_pre.sort_values(['w_delta'])[['ダミーID', '月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI', 'APR', '全治療期間（月数）','通院回数',
+  dfpren = dftx_pre.sort_values(['w_delta'])[['ダミーID', '月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI', 'APR', '全治療期間（月数）','調整回数',
                                                   '最終頭囲', '最終短頭率', '最終前頭部対称率', '最終後頭部対称率', '最終CA', '最終CVAI' #なぜか最終の値が初診の値と同じ
                                                   ]][:N]
 
   #print('平均治療期間：'+str(round(dfpren['全治療期間（月数）'].mean(), 1))+' ±'+str(round(dfpren['全治療期間（月数）'].std(), 1))+' か月')
   st.write('平均治療期間：'+str(round(dfpren['全治療期間（月数）'].mean(), 1))+' ±'+str(round(dfpren['全治療期間（月数）'].std(), 1))+' か月')
   #print('平均通院回数：'+str(round(dfpren['通院回数'].mean() + 1, 1))+' ±'+str(round(dfpren['通院回数'].std(), 1))+'回')
-  st.write('平均通院回数：'+str(round(dfpren['通院回数'].mean() + 1, 1))+' ±'+str(round(dfpren['通院回数'].std(), 1))+'回')
+  st.write('平均調整回数：'+str(round(dfpren['調整回数'].mean() + 1, 1))+' ±'+str(round(dfpren['調整回数'].std(), 1))+'回')
 
   d_para = ''
 
@@ -523,7 +523,7 @@ def similar_pts(dfpt, min=5):
   df_result['治療後月齢'] = df_result['月齢（概算）']+df_result['全治療期間（月数）']
   df_result['治療期間'] = df_result['全治療期間（月数）']
 
-  df_result_show = df_result[['ダミーID', '治療前月齢', '治療後月齢', '治療期間', '通院回数',
+  df_result_show = df_result[['ダミーID', '治療前月齢', '治療後月齢', '治療期間', '調整回数',
                     '頭囲', '最終頭囲', '頭囲変化量',
                     '短頭率', '最終短頭率', '短頭率変化量',
                     '前頭部対称率', '最終前頭部対称率', '前頭部対称率変化量',
