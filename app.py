@@ -484,7 +484,7 @@ def similar_pts(dfpt, min=5):
   #print('平均治療期間：'+str(round(dfpren['全治療期間（月数）'].mean(), 1))+' ±'+str(round(dfpren['全治療期間（月数）'].std(), 1))+' か月')
   st.write('平均治療期間：'+str(round(dfpren['全治療期間（月数）'].mean(), 1))+' ±'+str(round(dfpren['全治療期間（月数）'].std(), 1))+' か月')
   #print('平均通院回数：'+str(round(dfpren['通院回数'].mean() + 1, 1))+' ±'+str(round(dfpren['通院回数'].std(), 1))+'回')
-  st.write('平均調整回数：'+str(round(dfpren['調整回数'].mean() + 1, 1))+' ±'+str(round(dfpren['調整回数'].std(), 1))+'回')
+  #st.write('平均調整回数：'+str(round(dfpren['調整回数'].mean() + 1, 1))+' ±'+str(round(dfpren['調整回数'].std(), 1))+'回') #なぜかエラーになる？
 
   d_para = ''
 
