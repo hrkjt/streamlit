@@ -109,6 +109,7 @@ def tx_plot(dfpt, dftx=dftx, n=10, mo_weight=1):
 
   parameters = ['月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI', 'APR']
   dfpt_temp = dfpt[parameters]
+  st.write(dfpt.dtypes)
 
   #症例のZスコアの計算
   dftx_pre_para = dftx_pre[parameters]
@@ -638,10 +639,12 @@ if st.button('その他のランダムな患者で実行'):
   bd = pd.to_datetime(datetime.date.today()) - pd.Timedelta(days=dfpt['月齢（概算）'].iloc[0]*30.4375)
   bd = bd.date()
   m = (d-bd)/pd.Timedelta(30.4375,"D")
-  dfpt['月齢（概算）'] = float(m)
+  #dfpt['月齢（概算）'] = float(m)
 
   parameters = ['月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI']
   dfpt = dfpt[parameters]
+
+  st.write(dfpt.dtypes)
 
   tx_plot(dfpt, n=500)
   st.write('治療率を計算中・・・')
