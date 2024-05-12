@@ -1,3 +1,9 @@
+#streamlitメインの処理を/content/app.pyに保存
+#%%writefile app.py以降の記述を変えれば色々とstreamlitを試せる
+#試す内容はインプット元の②の色々なサンプルコードを参照
+#以下は5秒のカウントダウン後に風船を飛ばすコードを記載
+
+%%writefile app.py
 import time
 
 import streamlit as st
@@ -477,14 +483,14 @@ def similar_pts(dfpt, min=5):
   dftxn = dftx[dftx['ダミーID'].isin(ply)]
   #dftxn = dftxn[dftxn['全治療期間m'] != 0] #dftxnから経過観察症例を除外 10/29追記 必要？
 
-  dfpren = dftx_pre.sort_values(['w_delta'])[['ダミーID', '月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI', 'APR', '全治療期間（月数）','調整回数',
+  dfpren = dftx_pre.sort_values(['w_delta'])[['ダミーID', '月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI', 'APR', '全治療期間（月数）','通院回数',
                                                   '最終頭囲', '最終短頭率', '最終前頭部対称率', '最終後頭部対称率', '最終CA', '最終CVAI' #なぜか最終の値が初診の値と同じ
                                                   ]][:N]
 
   #print('平均治療期間：'+str(round(dfpren['全治療期間（月数）'].mean(), 1))+' ±'+str(round(dfpren['全治療期間（月数）'].std(), 1))+' か月')
   st.write('平均治療期間：'+str(round(dfpren['全治療期間（月数）'].mean(), 1))+' ±'+str(round(dfpren['全治療期間（月数）'].std(), 1))+' か月')
   #print('平均通院回数：'+str(round(dfpren['通院回数'].mean() + 1, 1))+' ±'+str(round(dfpren['通院回数'].std(), 1))+'回')
-  #st.write('平均調整回数：'+str(round(dfpren['調整回数'].mean() + 1, 1))+' ±'+str(round(dfpren['調整回数'].std(), 1))+'回') #なぜかエラーになる？
+  #st.write('平均通院回数：'+str(round(dfpren['通院回数'].mean() + 1, 1))+' ±'+str(round(dfpren['通院回数'].std(), 1))+'回')
 
   d_para = ''
 
@@ -523,7 +529,7 @@ def similar_pts(dfpt, min=5):
   df_result['治療後月齢'] = df_result['月齢（概算）']+df_result['全治療期間（月数）']
   df_result['治療期間'] = df_result['全治療期間（月数）']
 
-  df_result_show = df_result[['ダミーID', '治療前月齢', '治療後月齢', '治療期間', '調整回数',
+  df_result_show = df_result[['ダミーID', '治療前月齢', '治療後月齢', '治療期間', '通院回数',
                     '頭囲', '最終頭囲', '頭囲変化量',
                     '短頭率', '最終短頭率', '短頭率変化量',
                     '前頭部対称率', '最終前頭部対称率', '前頭部対称率変化量',
@@ -544,24 +550,54 @@ def similar_pts(dfpt, min=5):
 
 
 #初診患者のパラメータの入力
+import random
+random_float = int(random.random()*10)/10
+random_id = df_first['ダミーID'].unique()[int(len(df_first['ダミーID'].unique())*random_float)]
+dfpt = df_first[df_first['ダミーID'] == random_id]
+
 
 #生年月日
-bd = st.text_input('生年月日(YYYY-MM-DD)',value = '2024-01-01')
+bd = pd.to_datetime(datetime.date.today()) - pd.Timedelta(days=dfpt['月齢（概算）'].iloc[0]*30.4375)
+
+#bd = st.text_input('生年月日(YYYY-MM-DD)',value = '2024-01-01')
+bd = st.text_input('生年月日(YYYY-MM-DD)',value = bd.date())
 bd =  pd.to_datetime(bd)
 
 d = pd.to_datetime(datetime.date.today()) #今日の日付
 d =  st.text_input('基準日', value = str(d)[:10]) #基準日を変えたい場合はこちらに入力
 d =  pd.to_datetime(d)
 
-ap =  float(st.text_input('前後径', value = 100))
-lr =  float(st.text_input('左右径', value = 100))
-c =  float(st.text_input('頭囲', value = 100))
-bi =  float(st.text_input('短頭率', value = 100))
-asr =  float(st.text_input('前頭部対称率', value = 100))
-psr =  float(st.text_input('後頭部対称率', value = 100))
-ca =  float(st.text_input('CA', value = 10))
-cvai =  float(st.text_input('CVAI', value = 10))
+ap = dfpt['前後径'].iloc[0]
+#ap =  float(st.text_input('前後径', value = 100))
+ap =  float(st.text_input('前後径', value = int(ap+random_float)))
 
+lr = dfpt['左右径'].iloc[0]
+#lr =  float(st.text_input('左右径', value = 100))
+lr =  float(st.text_input('左右径', value = int(lr+random_float)))
+
+c = dfpt['頭囲'].iloc[0]
+#c =  float(st.text_input('頭囲', value = 100))
+c =  float(st.text_input('頭囲', value = int(c+random_float)))
+
+bi = dfpt['短頭率'].iloc[0]
+#bi =  float(st.text_input('短頭率', value = 100))
+bi =  float(st.text_input('短頭率', value = int(bi+random_float)))
+
+asr = dfpt['前頭部対称率'].iloc[0]
+#asr =  float(st.text_input('前頭部対称率', value = 100))
+asr =  float(st.text_input('前頭部対称率', value = int(asr+random_float)))
+
+psr = dfpt['後頭部対称率'].iloc[0]
+#psr =  float(st.text_input('後頭部対称率', value = 100))
+psr =  float(st.text_input('後頭部対称率', value = int(psr+random_float)))
+
+ca = dfpt['CA'].iloc[0]
+#ca =  float(st.text_input('CA', value = 10))
+ca =  float(st.text_input('CA', value = int(ca+random_float)))
+
+cvai = dfpt['CVAI'].iloc[0]
+#cvai =  float(st.text_input('CVAI', value = 10))
+cvai =  float(st.text_input('CVAI', value = int(cvai+random_float)))
 
 m = (d-bd)/pd.Timedelta(30.4375,"D") #月齢
 
