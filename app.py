@@ -570,40 +570,39 @@ d = pd.to_datetime(datetime.date.today()) #今日の日付
 #d =  st.text_input('基準日', value = str(d)[:10]) #基準日を変えたい場合はこちらに入力
 d =  pd.to_datetime(d)
 
-ap = dfpt['前後径'].iloc[0]
+#ap = dfpt['前後径'].iloc[0]
 ap =  float(st.text_input('前後径', value = 136))
 #ap =  float(st.number_input('前後径', value = int(ap+random_float)))
 
-lr = dfpt['左右径'].iloc[0]
+#lr = dfpt['左右径'].iloc[0]
 lr =  float(st.text_input('左右径', value = 130))
 #lr =  float(st.number_input('左右径', value = int(lr+random_float)))
 
-c = dfpt['頭囲'].iloc[0]
+#c = dfpt['頭囲'].iloc[0]
 c =  float(st.text_input('頭囲', value = 420))
 #c =  float(st.number_input('頭囲', value = int(c+random_float)))
 
-bi = dfpt['短頭率'].iloc[0]
+#bi = dfpt['短頭率'].iloc[0]
 bi =  float(st.text_input('短頭率', value = 105))
 #bi =  float(st.number_input('短頭率', value = int(bi+random_float)))
 
-asr = dfpt['前頭部対称率'].iloc[0]
+#asr = dfpt['前頭部対称率'].iloc[0]
 asr =  float(st.text_input('前頭部対称率', value = 97))
 #asr =  float(st.number_input('前頭部対称率', value = int(asr+random_float)))
 
-psr = dfpt['後頭部対称率'].iloc[0]
+#psr = dfpt['後頭部対称率'].iloc[0]
 psr =  float(st.text_input('後頭部対称率', value = 91))
 #psr =  float(st.number_input('後頭部対称率', value = int(psr+random_float)))
 
-ca = dfpt['CA'].iloc[0]
+#ca = dfpt['CA'].iloc[0]
 ca =  float(st.text_input('CA', value = 2))
 #ca =  float(st.number_input('CA', value = int(ca+random_float)))
 
-cvai = dfpt['CVAI'].iloc[0]
+#cvai = dfpt['CVAI'].iloc[0]
 cvai =  float(st.text_input('CVAI', value = 1))
 #cvai =  float(st.number_input('CVAI', value = int(cvai+random_float)))
 
 m = (d-bd)/pd.Timedelta(30.4375,"D") #月齢
-
 
 if st.button('実行'):
   if 100 not in [ap, lr, c, bi, asr, psr, ca, cvai]:
