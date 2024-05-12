@@ -544,12 +544,21 @@ def similar_pts(dfpt, min=5):
   #st.table(df_result_show)
   st.dataframe(df_result_show)
 
+#ランダムな初期患者を取得する関数
+@st.cache_data
+def get_random_pt():
+  import random
+  random_float = int(random.random()*10)/10
+  random_id = df_first['ダミーID'].unique()[int(len(df_first['ダミーID'].unique())*random_float)]
+  dfpt = df_first[df_first['ダミーID'] == random_id]
+  return(dfpt)
 
 #初診患者のパラメータの入力
 #import random
 #random_float = int(random.random()*10)/10
 #random_id = df_first['ダミーID'].unique()[int(len(df_first['ダミーID'].unique())*random_float)]
 #dfpt = df_first[df_first['ダミーID'] == random_id]
+dfpt = get_random_pt()
 
 # 今日の日付を取得し、pandasのTimestampオブジェクトに変換
 #d = pd.to_datetime(datetime.date.today())
@@ -562,47 +571,47 @@ def similar_pts(dfpt, min=5):
 
 
 #生年月日
-#bd = pd.to_datetime(datetime.date.today()) - pd.Timedelta(days=dfpt['月齢（概算）'].iloc[0]*30.4375)
+bd = pd.to_datetime(datetime.date.today()) - pd.Timedelta(days=dfpt['月齢（概算）'].iloc[0]*30.4375)
 
-bd = st.text_input('生年月日(YYYY-MM-DD)',value = '2024-01-01')
-#bd = st.text_input('生年月日(YYYY-MM-DD)',value = bd.date())
+#bd = st.text_input('生年月日(YYYY-MM-DD)',value = '2024-01-01')
+bd = st.text_input('生年月日(YYYY-MM-DD)',value = bd.date())
 bd =  pd.to_datetime(bd)
 
 d = pd.to_datetime(datetime.date.today()) #今日の日付
-#d =  st.text_input('基準日', value = str(d)[:10]) #基準日を変えたい場合はこちらに入力
+d =  st.text_input('基準日', value = str(d)[:10]) #基準日を変えたい場合はこちらに入力
 d =  pd.to_datetime(d)
 
-#ap = dfpt['前後径'].iloc[0]
-ap =  float(st.text_input('前後径', value = 136))
-#ap =  float(st.number_input('前後径', value = int(ap+random_float)))
+ap = dfpt['前後径'].iloc[0]
+#ap =  float(st.text_input('前後径', value = 136))
+ap =  float(st.number_input('前後径', value = int(ap+random_float)))
 
-#lr = dfpt['左右径'].iloc[0]
-lr =  float(st.text_input('左右径', value = 130))
-#lr =  float(st.number_input('左右径', value = int(lr+random_float)))
+lr = dfpt['左右径'].iloc[0]
+#lr =  float(st.text_input('左右径', value = 130))
+lr =  float(st.number_input('左右径', value = int(lr+random_float)))
 
-#c = dfpt['頭囲'].iloc[0]
-c =  float(st.text_input('頭囲', value = 420))
-#c =  float(st.number_input('頭囲', value = int(c+random_float)))
+c = dfpt['頭囲'].iloc[0]
+#c =  float(st.text_input('頭囲', value = 420))
+c =  float(st.number_input('頭囲', value = int(c+random_float)))
 
-#bi = dfpt['短頭率'].iloc[0]
-bi =  float(st.text_input('短頭率', value = 105))
-#bi =  float(st.number_input('短頭率', value = int(bi+random_float)))
+bi = dfpt['短頭率'].iloc[0]
+#bi =  float(st.text_input('短頭率', value = 105))
+bi =  float(st.number_input('短頭率', value = int(bi+random_float)))
 
-#asr = dfpt['前頭部対称率'].iloc[0]
-asr =  float(st.text_input('前頭部対称率', value = 97))
-#asr =  float(st.number_input('前頭部対称率', value = int(asr+random_float)))
+asr = dfpt['前頭部対称率'].iloc[0]
+#asr =  float(st.text_input('前頭部対称率', value = 97))
+asr =  float(st.number_input('前頭部対称率', value = int(asr+random_float)))
 
-#psr = dfpt['後頭部対称率'].iloc[0]
-psr =  float(st.text_input('後頭部対称率', value = 91))
-#psr =  float(st.number_input('後頭部対称率', value = int(psr+random_float)))
+psr = dfpt['後頭部対称率'].iloc[0]
+#psr =  float(st.text_input('後頭部対称率', value = 91))
+psr =  float(st.number_input('後頭部対称率', value = int(psr+random_float)))
 
-#ca = dfpt['CA'].iloc[0]
-ca =  float(st.text_input('CA', value = 2))
-#ca =  float(st.number_input('CA', value = int(ca+random_float)))
+ca = dfpt['CA'].iloc[0]
+#ca =  float(st.text_input('CA', value = 2))
+ca =  float(st.number_input('CA', value = int(ca+random_float)))
 
-#cvai = dfpt['CVAI'].iloc[0]
-cvai =  float(st.text_input('CVAI', value = 1))
-#cvai =  float(st.number_input('CVAI', value = int(cvai+random_float)))
+cvai = dfpt['CVAI'].iloc[0]
+#cvai =  float(st.text_input('CVAI', value = 1))
+cvai =  float(st.number_input('CVAI', value = int(cvai+random_float)))
 
 m = (d-bd)/pd.Timedelta(30.4375,"D") #月齢
 
