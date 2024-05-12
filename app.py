@@ -583,35 +583,35 @@ d =  pd.to_datetime(d)
 
 ap = dfpt['前後径'].iloc[0]
 #ap =  float(st.text_input('前後径', value = 136))
-ap =  float(st.number_input('前後径', value = int(ap)))
+ap =  float(st.text_input('前後径', value = int(ap)))
 
 lr = dfpt['左右径'].iloc[0]
 #lr =  float(st.text_input('左右径', value = 130))
-lr =  float(st.number_input('左右径', value = int(lr)))
+lr =  float(st.text_input('左右径', value = int(lr)))
 
 c = dfpt['頭囲'].iloc[0]
 #c =  float(st.text_input('頭囲', value = 420))
-c =  float(st.number_input('頭囲', value = int(c)))
+c =  float(st.text_input('頭囲', value = int(c)))
 
 bi = dfpt['短頭率'].iloc[0]
 #bi =  float(st.text_input('短頭率', value = 105))
-bi =  float(st.number_input('短頭率', value = int(bi)))
+bi =  float(st.text_input('短頭率', value = int(bi)))
 
 asr = dfpt['前頭部対称率'].iloc[0]
 #asr =  float(st.text_input('前頭部対称率', value = 97))
-asr =  float(st.number_input('前頭部対称率', value = int(asr)))
+asr =  float(st.text_input('前頭部対称率', value = int(asr)))
 
 psr = dfpt['後頭部対称率'].iloc[0]
 #psr =  float(st.text_input('後頭部対称率', value = 91))
-psr =  float(st.number_input('後頭部対称率', value = int(psr)))
+psr =  float(st.text_input('後頭部対称率', value = int(psr)))
 
 ca = dfpt['CA'].iloc[0]
 #ca =  float(st.text_input('CA', value = 2))
-ca =  float(st.number_input('CA', value = int(ca)))
+ca =  float(st.text_input('CA', value = int(ca)))
 
 cvai = dfpt['CVAI'].iloc[0]
 #cvai =  float(st.text_input('CVAI', value = 1))
-cvai =  float(st.number_input('CVAI', value = int(cvai)))
+cvai =  float(st.text_input('CVAI', value = int(cvai)))
 
 m = (d-bd)/pd.Timedelta(30.4375,"D") #月齢
 
