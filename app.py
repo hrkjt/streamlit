@@ -637,7 +637,7 @@ if st.button('その他のランダムな患者で実行'):
   random_id = df_first['ダミーID'].unique()[int(len(df_first['ダミーID'].unique())*random_float)]
   dfpt = df_first[df_first['ダミーID'] == random_id]
   bd = pd.to_datetime(datetime.date.today()) - pd.Timedelta(days=dfpt['月齢（概算）'].iloc[0]*30.4375)
-  bd = bd.date()
+  #bd = bd.date()
   m = (d-bd)/pd.Timedelta(30.4375,"D")
   #dfpt['月齢（概算）'] = float(m)
 
