@@ -560,7 +560,7 @@ def similar_pts(dfpt, min=5):
 
 
 #生年月日
-bd = pd.to_datetime(datetime.date.today()) - pd.Timedelta(days=dfpt['月齢（概算）'].iloc[0]*30.4375)
+#bd = pd.to_datetime(datetime.date.today()) - pd.Timedelta(days=dfpt['月齢（概算）'].iloc[0]*30.4375)
 
 bd = st.text_input('生年月日(YYYY-MM-DD)',value = '2024-01-01')
 #bd = st.text_input('生年月日(YYYY-MM-DD)',value = bd.date())
