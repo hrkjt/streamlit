@@ -640,7 +640,7 @@ if st.button('その他のランダムな患者で実行'):
   m = (d-bd)/pd.Timedelta(30.4375,"D")
   dfpt['月齢（概算）'] = m
 
-  parameters = ['月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', 'CI', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI']
+  parameters = ['月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI']
   dfpt = dfpt[parameters]
 
   tx_plot(dfpt, n=500)
