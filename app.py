@@ -1,9 +1,3 @@
-#streamlitメインの処理を/content/app.pyに保存
-#%%writefile app.py以降の記述を変えれば色々とstreamlitを試せる
-#試す内容はインプット元の②の色々なサンプルコードを参照
-#以下は5秒のカウントダウン後に風船を飛ばすコードを記載
-
-%%writefile app.py
 import time
 
 import streamlit as st
