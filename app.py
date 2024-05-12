@@ -457,7 +457,7 @@ def similar_pts(dfpt, min=5):
   dftx_pre['w_delta'] = 0
 
   for parameter in parameters:
-    dftx_pre['w_delta'] += dfpt_w[parameter][0]*abs(df_first['z_'+parameter] - dfpt_z[parameter][0])**2
+    dftx_pre['w_delta'] += dfpt_w[parameter].iloc[0]*abs(df_first['z_'+parameter] - dfpt_z[parameter].iloc[0])**2
 
   #最適人数の導出
   d=10000
@@ -467,7 +467,7 @@ def similar_pts(dfpt, min=5):
     dfpren = dftx_pre.sort_values(['w_delta'])[:i] #prepost？
     dfn = dfpren.describe()[1:2][parameters].reset_index()
     df_delta=(dfpt_temp-dfn)**2
-    sum_delta = df_delta.sum(axis=1)[0]
+    sum_delta = df_delta.sum(axis=1).iloc[0]
     if d > sum_delta:
       d = sum_delta
       N = i
@@ -491,8 +491,8 @@ def similar_pts(dfpt, min=5):
   d_para = ''
 
   for i in parameters:
-    difference = abs(dfpren.describe()[1:3][parameters][i][0]-dfpt_temp[i][0])
-    sd = dfpren.describe()[1:3][parameters][i][1]
+    difference = abs(dfpren.describe()[1:3][parameters][i].iloc[0]-dfpt_temp[i].iloc[0])
+    sd = dfpren.describe()[1:3][parameters][i].iloc[1]
     if difference > sd:
       d_para=d_para+i+' '
 
@@ -503,8 +503,8 @@ def similar_pts(dfpt, min=5):
   d_para = ''
 
   for i in parameters:
-    difference = abs(dfpren.describe()[1:3][parameters][i][0]-dfpt_temp[i][0])
-    sd = dfpren.describe()[1:3][parameters][i][1]
+    difference = abs(dfpren.describe()[1:3][parameters][i].iloc[0]-dfpt_temp[i].iloc[0])
+    sd = dfpren.describe()[1:3][parameters][i].iloc[1]
     if difference > 2*sd:
       d_para=d_para+i+' '
 
