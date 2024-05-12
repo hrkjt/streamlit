@@ -619,13 +619,13 @@ if st.button('実行'):
     #全体
     #similar_members = tx_plot(dfpt, n=500)
     #n=500で10秒
-    tx_plot(dfpt, n=500)
+  tx_plot(dfpt, n=500)
 
-    st.write('治療率を計算中・・・')
-    tx_rate(dfpt)
+  st.write('治療率を計算中・・・')
+  tx_rate(dfpt)
 
-    st.write('治療結果を計算中・・・')
-    similar_pts(dfpt)
+  st.write('治療結果を計算中・・・')
+  similar_pts(dfpt)
 
   else:
     st.write('値を入力してください。')
