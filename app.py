@@ -627,8 +627,8 @@ if st.button('実行'):
   st.write('治療結果を計算中・・・')
   similar_pts(dfpt)
 
-  else:
-    st.write('値を入力してください。')
+  #else:
+    #st.write('値を入力してください。')
 
 if st.button('その他のランダムな患者で実行'):
   #初診患者のパラメータの入力
