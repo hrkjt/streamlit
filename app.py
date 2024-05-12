@@ -208,7 +208,7 @@ def tx_plot(dfpt, dftx=dftx, n=10, mo_weight=1):
           c += 1
           st.write(c)
 
-      fig.update_layout(width=2000,height=2000)
+      fig.update_layout(width=1000,height=1000)
 
       for i in range(len(para_table)):
         for j in range(len(para_table[i])):
@@ -237,7 +237,7 @@ def tx_plot(dfpt, dftx=dftx, n=10, mo_weight=1):
                                   marker_symbol=marker_symbol), row=i+1, col=j+1)
       c += 1
 
-    fig.update_layout(width=2000,height=2000)
+    fig.update_layout(width=1000,height=1000)
 
     for i in range(len(para_table)):
       for j in range(len(para_table[i])):
