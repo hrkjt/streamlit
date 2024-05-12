@@ -638,7 +638,7 @@ if st.button('その他のランダムな患者で実行'):
   bd = pd.to_datetime(datetime.date.today()) - pd.Timedelta(days=dfpt['月齢（概算）'].iloc[0]*30.4375)
   bd = bd.date()
   m = (d-bd)/pd.Timedelta(30.4375,"D")
-  dfpt['月齢（概算）'] = m
+  dfpt['月齢（概算）'] = [m]
 
   parameters = ['月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI']
   dfpt = dfpt[parameters]
