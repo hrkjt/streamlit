@@ -272,7 +272,7 @@ def tx_rate(dfpt, df_first=df_first, n=30):
   df_first['w_delta'] = 0
 
   for parameter in parameters:
-    df_first['w_delta'] += dfpt_w[parameter][0]*abs(df_first['z_'+parameter] - dfpt_z[parameter][0])**2
+    df_first['w_delta'] += dfpt_w[parameter].iloc[0]*abs(df_first['z_'+parameter] - dfpt_z[parameter].iloc[0])**2
 
   #最適人数の導出（集団の平均が症例に最も近づく人数）
   d=10000 #平均との誤差スコアの初期値
