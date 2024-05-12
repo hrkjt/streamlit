@@ -605,16 +605,16 @@ cvai =  float(st.text_input('CVAI', value = 1))
 m = (d-bd)/pd.Timedelta(30.4375,"D") #月齢
 
 if st.button('実行'):
-  if 100 not in [ap, lr, c, bi, asr, psr, ca, cvai]:
-    dfpt = pd.DataFrame(data={'月齢（概算）':[m],
-                              '前後径':[ap],
-                              '左右径':[lr],
-                              '頭囲':[c],
-                              '短頭率':[bi],
-                              '前頭部対称率':[asr],
-                              '後頭部対称率':[psr],
-                              'CA':[ca],
-                              'CVAI':[cvai]})
+  #if 100 not in [ap, lr, c, bi, asr, psr, ca, cvai]:
+  dfpt = pd.DataFrame(data={'月齢（概算）':[m],
+                            '前後径':[ap],
+                            '左右径':[lr],
+                            '頭囲':[c],
+                            '短頭率':[bi],
+                            '前頭部対称率':[asr],
+                            '後頭部対称率':[psr],
+                            'CA':[ca],
+                            'CVAI':[cvai]})
     #全体
     #similar_members = tx_plot(dfpt, n=500)
     #n=500で10秒
@@ -638,7 +638,7 @@ if st.button('その他のランダムな患者で実行'):
   bd = pd.to_datetime(datetime.date.today()) - pd.Timedelta(days=dfpt['月齢（概算）'].iloc[0]*30.4375)
   bd = bd.date()
   m = (d-bd)/pd.Timedelta(30.4375,"D")
-  dfpt['月齢（概算）'] = [m]
+  dfpt['月齢（概算）'] = m
 
   parameters = ['月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI']
   dfpt = dfpt[parameters]
