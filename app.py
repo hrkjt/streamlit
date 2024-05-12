@@ -372,7 +372,7 @@ def tx_rate(dfpt, df_first=df_first, n=30):
   #displayed_parameters = parameters.copy().remove('APR')
   for i in displayed_parameters:
     #平均との差
-    difference = abs(dfallN.describe()[1:3][displayed_parameters][i][0]-dfpt[i][0])
+    difference = abs(dfallN.describe()[1:3][displayed_parameters][i].iloc[0]-dfpt[i].iloc[0])
 
     #標準偏差
     sd = dfallN.describe()[1:3][displayed_parameters][i][1]
@@ -389,7 +389,7 @@ def tx_rate(dfpt, df_first=df_first, n=30):
   d_para = ''
   for i in displayed_parameters:
     #平均との差 2023/1/15 追記修正
-    difference = abs(dfallN.describe()[1:3][displayed_parameters][i][0]-dfpt[i][0])
+    difference = abs(dfallN.describe()[1:3][displayed_parameters][i].iloc[0]-dfpt[i].iloc[0])
 
     #標準偏差
     sd = dfallN.describe()[1:3][displayed_parameters][i][1]
