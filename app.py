@@ -109,7 +109,7 @@ def tx_plot(dfpt, dftx=dftx, n=10, mo_weight=1):
 
   parameters = ['月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI', 'APR']
   dfpt_temp = dfpt[parameters]
-  st.write(dfpt.dtypes)
+  #st.write(dfpt.dtypes)
 
   #症例のZスコアの計算
   dftx_pre_para = dftx_pre[parameters]
@@ -206,6 +206,7 @@ def tx_plot(dfpt, dftx=dftx, n=10, mo_weight=1):
                                       marker=dict(color=list_colors[c]),
                                       marker_symbol=marker_symbol), row=i+1, col=j+1)
           c += 1
+          st.write(c)
 
       fig.update_layout(width=2000,height=2000)
 
@@ -644,7 +645,7 @@ if st.button('その他のランダムな患者で実行'):
   parameters = ['月齢（概算）', '前後径', '左右径', '頭囲', '短頭率', '前頭部対称率', '後頭部対称率', 'CA', 'CVAI']
   dfpt = dfpt[parameters]
 
-  st.write(dfpt.dtypes)
+  #st.write(dfpt.dtypes)
 
   tx_plot(dfpt, n=500)
   st.write('治療率を計算中・・・')
