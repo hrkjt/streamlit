@@ -214,6 +214,8 @@ def tx_plot(dfpt, dftx=dftx, n=10, mo_weight=1):
         for j in range(len(para_table[i])):
           fig.update_xaxes(title='月齢', range = [xmin, xmax], row=i+1, col=j+1)
 
+      fig.update_traces(showlegend=False)
+
       #fig.show()
       st.plotly_chart(fig)
 
@@ -243,6 +245,8 @@ def tx_plot(dfpt, dftx=dftx, n=10, mo_weight=1):
       for j in range(len(para_table[i])):
         fig.update_xaxes(title='月齢', range = [xmin, xmax], row=i+1, col=j+1)
 
+    fig.update_traces(showlegend=False)
+    
     #fig.show()
     #st.pyplot(fig)
     st.plotly_chart(fig)
