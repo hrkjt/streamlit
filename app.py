@@ -16,7 +16,8 @@ import requests
 
 #あらかじめ作成しておいたCSVファイルをデータフレームに
 # ファイルのURL
-url = 'https://d18fktiuhhpgn2.cloudfront.net/attachments/5258e94204de2149f00ca6bbc8cd32ef5a019a04/store/4abd9661bb3e60e7b71c9d935b1ce9e751181f6d539d078c9ef94a9a633e/anonymized_combined_table_20240504.xlsx'
+#url = 'https://d18fktiuhhpgn2.cloudfront.net/attachments/5258e94204de2149f00ca6bbc8cd32ef5a019a04/store/4abd9661bb3e60e7b71c9d935b1ce9e751181f6d539d078c9ef94a9a633e/anonymized_combined_table_20240504.xlsx'
+url = st.secrets["URL"]
 
 # URLからファイルをダウンロード
 response = requests.get(url)
